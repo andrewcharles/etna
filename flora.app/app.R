@@ -4,14 +4,13 @@ library(dplyr)
 library(terra)
 library(sf)
 library(devtools)
-# From https://www.census.gov/geo/maps-data/data/cbf/cbf_state.html
 data <- st_as_sf(subset_flora)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Biodiversity explorer"),
+    titlePanel("Flora"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(

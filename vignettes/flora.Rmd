@@ -1,0 +1,54 @@
+---
+title: "flora"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{flora}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(etna)
+```
+
+
+```{r setup, include=FALSE}
+#library(etna)
+library(leaflet)
+library(dplyr)
+library(terra)
+library(sf)
+library(devtools)
+library(DT)
+library(here)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a point dataset of observations.
+
+These points in time could be compared against remote sensing pixels.
+
+
+
+```{r}
+df <- load(file=file.path(here::here('data'),'subset_flora.rda'))
+fdata <- st_as_sf(subset_flora)
+fv <- fdata %>% vect()
+fs <- fdata %>% st_as_sf()
+
+terra::plot(fv)
+```
+
+```{r}
+table <- fdata %>% st_set_geometry(NULL)
+datatable(table, caption = "Flora information - Bellarine")
+
+```
+
