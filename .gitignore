@@ -5,3 +5,6 @@
 data/FLORAFAUNA
 data
 *.zip
+forest.app/data
+inst/doc
+

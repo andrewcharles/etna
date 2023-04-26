@@ -1,6 +1,73 @@
+# ETNA
+
+A project for exploring publicly available vegetation and biodiversity data
+in the state of Victoria.
+
+## Bioreg.app
+
+[Bioregion Explorer - the app](https://andrewcharles.shinyapps.io/bioreg/)
+
+Explore the large scale biodiversity regions of the state. For more background see 
+[Environment Victoria] (https://www.environment.vic.gov.au/biodiversity/bioregions-and-evc-benchmarks)
+and [Vic Flora](https://vicflora.rbg.vic.gov.au/pages/bioregions).
+
+Data is converted from the publicly available format using `R/extract_bioreg_data.R`
+
+Data exploration in `bioreg.Rmd`
+
+App deployment: `rsconnect::deployApp(".")`
+
+VBIOREG100 - coarse regions. very large scale.
+
+### Development resources
+- Shiny layout: [https://shiny.rstudio.com/articles/layout-guide.html]
+- DT tables: [https://yihui.shinyapps.io/DT-rows/]
 
 
-rsconnect::deployApp(".")
+## Flora.app
+
+VBA_FLORA_25
+This is a very high resolution point dataset.
+VBA_FLORA_25_1 is similar?
+
+## evc.vic.app
+
+Polygons of ecological vegetation classes.
+NV2005 - polygons covering the entire state, with some gaps. Detailed vegetation classes.
+
+
+## APPENDIX - DATA SPECS
+This is a derived dataset that delineates the Bioregional Conservation Status of EVCs. (NV2005_EVCBCS) .
+
+The dataset is derived from a combination of Victorian bioregions (VBIOREG100), Pre 1750 EVCs (NV1750_EVC) and the current version of Native Vegetation Extent (NV2005_EXTENT). Bioregional conservation status and geographic occurrence are applied to unique Bioregion-EVC units.
+
+The dataset underpins the implementation of Victoria's Native Vegetation Management Framework, and the preparation of Regional Vegetation Plans in addition to other biodiversity planning. The dataset requires upgrading when any of the three input datasets change. 
+Native Vegetation - Modelled 2005 Ecological Vegetation Classes (with Bioregional Conservation Status) ID : a502df15-7b90-5e96-b1a0-ba29e95558b2
+Projection : Geographicals on GDA2020
+Buffer : No buffer
+File Format : ESRI Shape file
+Area : Whole dataset 
+
+Victorian Biodiversity Atlas flora records (unrestricted) for sites with high spatial accuracy ID : 4803b0e0-e312-5371-8e6a-88248e42e17d
+Projection : Geographicals on GDA2020
+Buffer : No buffer
+File Format : ESRI Shape file
+Area : Whole dataset 
+
+OGMAP100 = very big forest shapes - some detail around terrain. numbered
+Modelled Forest Classes
+ID : d1c9b14d-8509-5f62-bef7-b6ba9bbfb36a
+Projection : Geographicals on GDA2020
+Buffer : No buffer
+File Format : ESRI Shape file
+Area : Whole dataset 
+
+TERN land cover Datasets
+Selected sites - point data. Points seem a bit random?
+
+## RESOURCES
+
+https://r-spatial.org/book/sp-raster.html
 
 
 GIT SETUP
@@ -13,3 +80,4 @@ git config --local user.email 'ac1201@gmail.com'
 cat ~/.ssh/id_rsa_gitbash.pub
 git config --local core.sshcommand 'ssh -i ~/.ssh/id_rsa_gitbash -F /dev/null'
 git push --set-upstream origin master
+ssh-add ~/.ssh/id_rsa_gitbash
